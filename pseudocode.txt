@@ -1,5 +1,4 @@
 Things Needed:
--Deck of cards - find images and size properly
 -Increment DOWN for each card dealt - create text that keeps track of number of cards = each player gets a deck of 26 
 -deal a card to each user - whichever card is higher wins points for each card 
 -if tie occurs = take away 5 cards for each user from the deck and deal each user a card. Whoever wins gets points for EACH CARD dealt
