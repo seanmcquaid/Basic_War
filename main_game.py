@@ -43,8 +43,8 @@ def random_number2():
 # ==== IMAGES ======
 
 start_card = pygame.image.load('cards/deck.png')
-card_image = pygame.image.load('cards/' +cards[random_number1()] + '.png')
-card_image2 = pygame.image.load('cards/' +cards[random_number2()] + '.png') 
+card_image = pygame.image.load('cards/' + cards[random_number1()] + '.png')
+card_image2 = pygame.image.load('cards/' + cards[random_number2()] + '.png') 
 
 def main_game():
     game_on = True
@@ -86,8 +86,6 @@ def main_game():
                         print (str(random_number1()))
                         print (str(random_number2()))
                         print ("COMPUTER WINS THIS ROUND!")
-        # pygame_screen.blit(card1,[25, 200])
-        # pygame_screen.blit(card2,[400, 200])
         
         pygame.display.flip()
 

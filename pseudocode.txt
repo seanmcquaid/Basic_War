@@ -4,4 +4,3 @@ Things Needed:
 -if tie occurs = take away 5 cards for each user from the deck and deal each user a card. Whoever wins gets points for EACH CARD dealt
 have point counters for each users score
 -if user score = 52 , game is over
--green background set to background size
