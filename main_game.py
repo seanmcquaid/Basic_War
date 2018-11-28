@@ -2,7 +2,6 @@
 # cd ~/miniconda3/bin
 # source activate py3k
 # cd /Users/seanmcquaid/development/Projects/war
-# python game.py
 
 import pygame
 from random import randint
@@ -46,8 +45,6 @@ def main_game():
             pygame_screen.blit(card_back(),[400, 200])
             card1 = player_card_image() 
             card2 = comp_card_image()
-            card_val1 = cards[card1[1]]
-            card_val2 = cards[card2[1]]
             text.instructions()
             text.draw_instructions()
             text.title()
@@ -61,8 +58,10 @@ def main_game():
         else: 
             text.player_point_counter()
             text.comp_point_counter()
-            text.deck_counter()
+            text.deck_counter(len(cards))
             text.draw_counters()
+            text.winner("?!")
+            text.draw_winner_player()
             pygame_screen.blit(card1[0],[25, 200])
             pygame_screen.blit(card2[0],[400, 200])
             for event in pygame.event.get():
@@ -70,29 +69,27 @@ def main_game():
                     game_on = False
                 elif (event.type == pygame.KEYDOWN):
                     if (event.key == 32):
-                        card1 = player_card_image() 
-                        card2 = comp_card_image()
-                        card_val_suit1 = cards[card1[1]]
-                        card_val_suit2 = cards[card2[1]]
-                        card_val1 = card_val_suit1[:-1]
-                        card_val2 = card_val_suit2[:-1]
-                        print (cards)
-                        print (len(cards))
-                        if len(cards) >=2:
-                            cards.remove(card_val_suit1)
-                            cards.remove(card_val_suit2)
-                        if (int(card_val1) > int(card_val2)):
-                            print ("Player: "+str(card_val1))
-                            print ("Computer: "+str(card_val2))
-                            print ("Player wins")
-                        elif (int(card_val1) < int(card_val2)):
-                            print ("Player: "+str(card_val1))
-                            print ("Computer: "+str(card_val2))
-                            print ("Computer wins")
+                        if len(cards) == 0:
+                            if text.player_points > text.comp_points:
+                                print ("game over")
+                            
                         else:
-                            print ("Player: "+str(card_val1))
-                            print ("Computer: "+str(card_val2))
-                            print ("you tied")
+                            card1 = player_card_image() 
+                            card_val_suit1 = cards[card1[1]]
+                            card_val1 = card_val_suit1[:-1]
+                            cards.remove(card_val_suit1)
+                            card2 = comp_card_image()
+                            card_val_suit2 = cards[card2[1]]
+                            card_val2 = card_val_suit2[:-1] 
+                            cards.remove(card_val_suit2)
+                            if (int(card_val1) > int(card_val2)):
+                                text.player_point_inc()
+                                text.winner("You")
+                            elif (int(card_val1) < int(card_val2)):
+                                text.comp_point_inc()
+                                text.winner("Comp")
+                            else:
+                                text.winner("Neither")
                             
                     
         pygame.display.flip()

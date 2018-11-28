@@ -1,3 +1,0 @@
-2) type out instructions
-3) logic for game
-4) points incrementer that will display underneath current text
