@@ -75,11 +75,11 @@ def main_game():
                     if (event.key == 32):
                         if len(cards) == 0:
                             if text.player_points > text.comp_points:
-                                winner = "YOU WIN THE GAME!"
+                                winner = "YOU WIN THE GAME! Press enter to close!"
                             elif text.player_points < text.comp_points:
-                                winner = "YOU LOST TO THE COMPUTER!"
+                                winner = "YOU LOST TO THE COMPUTER! Press enter to close!"
                             else:
-                                winner = "WOW!!! YOU ACTUALLY TIED?!?!?"
+                                winner = "WOW!!! YOU ACTUALLY TIED?!?!? Press enter to close!"
                         else:
                             card1 = player_card_image() 
                             card_val_suit1 = cards[card1[1]]
@@ -97,7 +97,9 @@ def main_game():
                                 round_winner = "Comp"
                             else:
                                 round_winner = "Neither"
-                            
+                    elif (len(cards) == 0 and event.key == 13):
+                        game_on = False
+                        
                     
         pygame.display.flip()
 
