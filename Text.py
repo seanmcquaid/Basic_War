@@ -8,13 +8,11 @@ class Text(object):
         self.comp_points = 0
         self.screen_rect = self.screen.get_rect()
         self.text_color = (0,0,0)
-        self.back_color = (0,102,0)
-        self.font = pygame.font.Font(None, 60)
         self.rect = pygame.Rect(0,0,self.width,self.height)
         self.rect.center = self.screen_rect.center
     def title(self):
-        self.font = pygame.font.Font(None, 60)
-        self.image_message = self.font.render("WAR!", True, self.text_color)
+        self.font = pygame.font.Font(None, 45)
+        self.image_message = self.font.render("BASIC WAR!", True, self.text_color)
         self.image_message_rect = self.image_message.get_rect()
         self.image_message_rect.center = self.rect.center
     def instructions(self):
@@ -38,22 +36,26 @@ class Text(object):
         self.xy4 = (225,150)
         self.font = pygame.font.Font(None, 28)
         self.image_message4 = self.font.render("CARDS LEFT: %d" %deck_length, True, self.text_color)
-    def winner(self,round_winner):
+    def winner_of_round(self,round_winner):
         self.round_winner = round_winner
-        self.xy5 = (225,300)
+        self.xy5 = (205,300)
         self.font = pygame.font.Font(None, 23)
         self.image_message0 = self.font.render("ROUND WINNER: %s" %self.round_winner, True, self.text_color)
+    def winner_of_game(self, game_winner):
+        self.game_winner = game_winner
+        self.xy6 = (145,500)
+        self.font = pygame.font.Font(None, 23)
+        self.image_message0 = self.font.render("GAME WINNER: %s" %self.game_winner, True, self.text_color)
     def draw_title_text(self):
-        self.screen.fill(self.back_color, self.rect)
         self.screen.blit(self.image_message,self.image_message_rect)
     def draw_instructions(self):
-        self.screen.fill(self.back_color, self.rect)
         self.screen.blit(self.image_message1,self.xy1)
     def draw_counters(self):
-        self.screen.fill(self.back_color, self.rect)
         self.screen.blit(self.image_message2,self.xy2)
         self.screen.blit(self.image_message3,self.xy3)
         self.screen.blit(self.image_message4,self.xy4)
-    def draw_winner_player(self):
-        self.screen.fill(self.back_color, self.rect)
+    def draw_round_winner_player(self):
         self.screen.blit(self.image_message0,self.xy5)
+    def draw_game_winner_player(self):
+        self.screen.blit(self.image_message0,self.xy6)
+

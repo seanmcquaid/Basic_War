@@ -45,6 +45,8 @@ def main_game():
             pygame_screen.blit(card_back(),[400, 200])
             card1 = player_card_image() 
             card2 = comp_card_image()
+            round_winner = ""
+            winner = ""
             text.instructions()
             text.draw_instructions()
             text.title()
@@ -60,8 +62,10 @@ def main_game():
             text.comp_point_counter()
             text.deck_counter(len(cards))
             text.draw_counters()
-            text.winner("?!")
-            text.draw_winner_player()
+            text.winner_of_round(round_winner)
+            text.draw_round_winner_player()
+            text.winner_of_game(winner)
+            text.draw_game_winner_player()
             pygame_screen.blit(card1[0],[25, 200])
             pygame_screen.blit(card2[0],[400, 200])
             for event in pygame.event.get():
@@ -71,8 +75,11 @@ def main_game():
                     if (event.key == 32):
                         if len(cards) == 0:
                             if text.player_points > text.comp_points:
-                                print ("game over")
-                            
+                                winner = "YOU WIN THE GAME!"
+                            elif text.player_points < text.comp_points:
+                                winner = "YOU LOST TO THE COMPUTER!"
+                            else:
+                                winner = "WOW!!! YOU ACTUALLY TIED?!?!?"
                         else:
                             card1 = player_card_image() 
                             card_val_suit1 = cards[card1[1]]
@@ -84,12 +91,12 @@ def main_game():
                             cards.remove(card_val_suit2)
                             if (int(card_val1) > int(card_val2)):
                                 text.player_point_inc()
-                                text.winner("You")
+                                round_winner = "You"
                             elif (int(card_val1) < int(card_val2)):
                                 text.comp_point_inc()
-                                text.winner("Comp")
+                                round_winner = "Comp"
                             else:
-                                text.winner("Neither")
+                                round_winner = "Neither"
                             
                     
         pygame.display.flip()
