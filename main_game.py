@@ -6,9 +6,7 @@
 
 import pygame
 from random import randint
-from User import User
 from Text import Text
-from Cards import Cards
 
 pygame.init()
 
@@ -18,7 +16,6 @@ pygame.display.set_caption("War! The Card Game")
 background_color = (0, 102, 0)
 
 
-player = User()
 text = Text(pygame_screen)
 
 cards = []
