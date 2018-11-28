@@ -19,6 +19,7 @@ class Text(object):
         self.xy1 = (100,100)
         self.font = pygame.font.Font(None, 28)
         self.image_message1 = self.font.render("Press Spacebar to Continue to Each Round", True, self.text_color)
+        self.image_message2 = self.font.render("Highest Card Wins!", True, self.text_color)
     def player_point_counter(self):
         self.xy2 = (0,0)
         self.font = pygame.font.Font(None, 28)
