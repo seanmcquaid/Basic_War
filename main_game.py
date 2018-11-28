@@ -38,6 +38,7 @@ def card_back():
 def main_game():
     game_on = True
     game_start = False
+    new_card = True
     while game_on:       
         pygame_screen.fill(background_color)
         if (game_start == False):
@@ -58,16 +59,6 @@ def main_game():
                     if (event.key == 32):
                         game_start = True
         else: 
-            text.player_point_counter()
-            text.comp_point_counter()
-            text.deck_counter(len(cards))
-            text.draw_counters()
-            text.winner_of_round(round_winner)
-            text.draw_round_winner_player()
-            text.winner_of_game(winner)
-            text.draw_game_winner_player()
-            pygame_screen.blit(card1[0],[25, 200])
-            pygame_screen.blit(card2[0],[400, 200])
             for event in pygame.event.get():
                 if (event.type == pygame.QUIT):
                     game_on = False
@@ -79,27 +70,39 @@ def main_game():
                             elif text.player_points < text.comp_points:
                                 winner = "YOU LOST TO THE COMP! Press enter to close!"
                             else:
-                                winner = "YOU ACTUALLy TIED?! Press enter to close!"
+                                winner = "YOU ACTUALLY TIED?! Press enter to close!"
                         else:
-                            card1 = player_card_image() 
-                            card_val_suit1 = cards[card1[1]]
-                            card_val1 = card_val_suit1[:-1]
-                            cards.remove(card_val_suit1)
-                            card2 = comp_card_image()
-                            card_val_suit2 = cards[card2[1]]
-                            card_val2 = card_val_suit2[:-1] 
-                            cards.remove(card_val_suit2)
-                            if (int(card_val1) > int(card_val2)):
-                                text.player_point_inc()
-                                round_winner = "You"
-                            elif (int(card_val1) < int(card_val2)):
-                                text.comp_point_inc()
-                                round_winner = "Comp"
-                            else:
-                                round_winner = "Neither"
+                            new_card = True
                     elif (len(cards) == 0 and event.key == 13):
                         game_on = False
-                        
+            if new_card:
+                card1 = player_card_image() 
+                card_val_suit1 = cards[card1[1]]
+                card_val1 = card_val_suit1[:-1]
+                cards.remove(card_val_suit1)
+                card2 = comp_card_image()
+                card_val_suit2 = cards[card2[1]]
+                card_val2 = card_val_suit2[:-1] 
+                cards.remove(card_val_suit2)            
+                if (int(card_val1) > int(card_val2)):
+                    text.player_point_inc()
+                    round_winner = "You"
+                elif (int(card_val1) < int(card_val2)):
+                    text.comp_point_inc()
+                    round_winner = "Comp"
+                else:
+                    round_winner = "Neither"
+                new_card = False           
+            text.player_point_counter()
+            text.comp_point_counter()
+            text.deck_counter(len(cards))
+            text.draw_counters()
+            text.winner_of_round(round_winner)
+            text.draw_round_winner_player()
+            text.winner_of_game(winner)
+            text.draw_game_winner_player()
+            pygame_screen.blit(card1[0],[25, 200])
+            pygame_screen.blit(card2[0],[400, 200])    
                     
         pygame.display.flip()
 
