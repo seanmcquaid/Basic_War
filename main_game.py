@@ -12,25 +12,21 @@ from Cards import Cards
 
 pygame.init()
 
-# ====== SCREEN SETTING =======
 screen_size = (600, 600)
 pygame_screen = pygame.display.set_mode(screen_size)
 pygame.display.set_caption("War! The Card Game")
 background_color = (0, 102, 0)
 
-# ==== OBJECTS ====
 
 player = User()
 text = Text(pygame_screen)
 
-# ====== CREATING LOOP FOR DECK OF CARDS ======
 cards = []
 suits = ['h','s','d','c']
 for s in suits:
     for c in range(1,14):
         cards.append(str(c)+s)
 
-# ==== RANDOM NUMBERS FOR EACH CARD INDEX IN ARRAY =====
 def card_image1():
     rand_card1 = randint(0,51)
     card_image1 = pygame.image.load('cards/' + cards[rand_card1] + '.png')
@@ -39,10 +35,9 @@ def card_image2():
     rand_card2 = randint(0,51)
     card_image2 = pygame.image.load('cards/' + cards[rand_card2] + '.png') 
     return card_image2
-
-# ==== IMAGES ======
-
-start_card = pygame.image.load('cards/deck.png') 
+def card_back():
+    start_card = pygame.image.load('cards/deck.png') 
+    return start_card
 
 def main_game():
     game_on = True
@@ -50,10 +45,12 @@ def main_game():
     while game_on:       
         pygame_screen.fill(background_color)
         if (game_start == False):
-            pygame_screen.blit(start_card,[25, 200])
-            pygame_screen.blit(start_card,[400, 200])
+            pygame_screen.blit(card_back(),[25, 200])
+            pygame_screen.blit(card_back(),[400, 200])
             card1 = card_image1() 
             card2 = card_image2()
+            text.instructions()
+            text.draw_instructions()
             text.title()
             text.draw_title_text()
             for event in pygame.event.get():
@@ -76,9 +73,7 @@ def main_game():
                     if (event.key == 32):
                         card1 = card_image1() 
                         card2 = card_image2()
-                        # generate new random number
-                        # generate new image
-                        #need to figure out how to UPDATE THIS BLIT
+
                     
         pygame.display.flip()
 
