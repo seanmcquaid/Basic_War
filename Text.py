@@ -43,7 +43,7 @@ class Text(object):
         self.image_message0 = self.font.render("ROUND WINNER: %s" %self.round_winner, True, self.text_color)
     def winner_of_game(self, game_winner):
         self.game_winner = game_winner
-        self.xy6 = (100,500)
+        self.xy6 = (90,500)
         self.font = pygame.font.Font(None, 23)
         self.image_message0 = self.font.render("GAME WINNER: %s" %self.game_winner, True, self.text_color)
     def draw_title_text(self):

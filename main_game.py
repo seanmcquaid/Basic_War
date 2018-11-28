@@ -77,9 +77,9 @@ def main_game():
                             if text.player_points > text.comp_points:
                                 winner = "YOU WIN THE GAME! Press enter to close!"
                             elif text.player_points < text.comp_points:
-                                winner = "YOU LOST TO THE COMPUTER! Press enter to close!"
+                                winner = "YOU LOST TO THE COMP! Press enter to close!"
                             else:
-                                winner = "WOW!!! YOU ACTUALLY TIED?!?!? Press enter to close!"
+                                winner = "YOU ACTUALLy TIED?! Press enter to close!"
                         else:
                             card1 = player_card_image() 
                             card_val_suit1 = cards[card1[1]]
