@@ -75,6 +75,7 @@ def main_game():
                             new_card = True
                     elif (len(cards) == 0 and event.key == 13):
                         game_on = False
+                        
             if new_card:
                 card1 = player_card_image() 
                 card_val_suit1 = cards[card1[1]]
@@ -92,7 +93,8 @@ def main_game():
                     round_winner = "Comp"
                 else:
                     round_winner = "Neither"
-                new_card = False           
+                new_card = False 
+
             text.player_point_counter()
             text.comp_point_counter()
             text.deck_counter(len(cards))
