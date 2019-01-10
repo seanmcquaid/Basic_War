@@ -1,5 +1,5 @@
 # War
-![Start Sreen](./readme/start_screen.png)
+![Start Sreen](./readme/start_screen.jpg)
 
 ## Contents
     * Description
@@ -56,4 +56,4 @@ This project is built using Python and Pygame. meant to be a basic recreation of
 ## Screenshots
 * Main Game
 
-![Game Screen](./readme/end_screen.png)
+![Game Screen](./readme/end_screen.jpg)
