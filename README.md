@@ -1,5 +1,5 @@
 # War
-![Home Page](IMG)
+![Start Sreen](./readme/start_screen.png)
 
 ## Contents
     * Description
@@ -11,7 +11,7 @@
     * Screenshots
 
 ## Description
-This project is meant to be a basic recreation of the popular card game, "War." 
+This project is built using Python and Pygame. meant to be a basic recreation of the popular card game, "War." 
 
 ### Features
 * 
@@ -21,17 +21,27 @@ This project is meant to be a basic recreation of the popular card game, "War."
 * Pygame
 
 ## Challenges and Solutions
-* Create Text
+* Creating a new card for each round
     *
-*
+* Creating an array to store the deck of cards
+    *
+    ```
+    cards = []
+    suits = ['h','s','d','c']
+    for s in suits:
+        for c in range(1,14):
+            cards.append(str(c)+s)
+    ```
+* Game Logic
 
 ## MVP
 * 
 
 ## Stretch Goals
 * Create point counter system
+* Implement Full "War" Functionality for a tie
 
 ## Screenshots
 * Main Game
 
-![Results Desktop](IMG)
+![Game Screen](./readme/end_screen.png)
