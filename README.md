@@ -17,7 +17,7 @@ This project is built using Python and Pygame. meant to be a basic recreation of
 * Displays facedown cards at the start of the game and will populate a set of cards for each player every time the spacebar is pressed
 * Point counter to keep track of both player and computer points
 * Deck counter to keep track of how many cards are left in the deck
-* End screen that populates when the length of the cards is equal to zero
+* End screen that populates when the length of the cards array is equal to zero
 
 ## Technologies
 * Python
