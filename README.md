@@ -23,8 +23,8 @@ This project is built using Python and Pygame. meant to be a basic recreation of
 * Pygame
 
 ## Challenges and Solutions
-* Creating a new card for each round
-    * While creating the initial versions of the game, I struggled to come up with an appropriate way
+* Populating a new card for each round for each player
+    * While creating the initial versions of the game, I struggled to come up with an appropriate way to group my code 
 
 * Creating an array to store the deck of cards
     * As I was looking to actually populate the card images, I quickly realized that creating an array manually with the different image file names was inefficient. I decided to rename all the files to corresponding number values and suit letters from the game. Then I created a for loop in order to append the corresponding numbers and letters into an empty array for the cards. 
@@ -36,7 +36,9 @@ This project is built using Python and Pygame. meant to be a basic recreation of
         for c in range(1,14):
             cards.append(str(c)+s)
     ```
-* 
+* Using resuable functions to draw the cards for both the player and computer
+    * After completing my solution for storing a deck of cards, I needed a way to populate these images! I did so but concatenating a string for the image path using a random number from 0 to  the length of the cards array minus 1. 
+
     ```
      def player_card_image():
         rand_card1 = randint(0,len(cards)-1)
@@ -48,7 +50,6 @@ This project is built using Python and Pygame. meant to be a basic recreation of
         card_image2 = pygame.image.load('cards/' + cards[rand_card2] + '.png') 
         return [card_image2,rand_card2]
     ```
-* Game Logic
 
 ## MVP
 * Create a basic version of the game "War" utilizing Python as the programming language and Pygame to display content.
