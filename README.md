@@ -24,30 +24,6 @@ This project is built using Python and Pygame. meant to be a basic recreation of
 * Pygame
 
 ## Challenges and Solutions
-* Populating a new card for each round for each player
-    * While creating the initial versions of the game, I struggled to come up with an appropriate way to group my code so I can generate new cards and distribute points at the same time. I found that basing my logic on the new card being generated yielded the results I was looking to get.
-
-    ```
-    if new_card:
-    card1 = player_card_image() 
-    card_val_suit1 = cards[card1[1]]
-    card_val1 = card_val_suit1[:-1]
-    cards.remove(card_val_suit1)
-    card2 = comp_card_image()
-    card_val_suit2 = cards[card2[1]]
-    card_val2 = card_val_suit2[:-1] 
-    cards.remove(card_val_suit2)            
-    if (int(card_val1) > int(card_val2)):
-        text.player_point_inc()
-        round_winner = "You"
-    elif (int(card_val1) < int(card_val2)):
-        text.comp_point_inc()
-        round_winner = "Comp"
-    else:
-        round_winner = "Neither"
-    new_card = False 
-    ```
-
 * Creating an array to store the deck of cards
     * As I was looking to actually populate the card images, I quickly realized that creating an array manually with the different image file names was inefficient. I decided to rename all the files to corresponding number values and suit letters from the game. Then I created a for loop in order to append the corresponding numbers and letters into an empty array for the cards. 
 
@@ -72,6 +48,30 @@ This project is built using Python and Pygame. meant to be a basic recreation of
         rand_card2 = randint(0,len(cards)-1)
         card_image2 = pygame.image.load('cards/' + cards[rand_card2] + '.png') 
         return [card_image2,rand_card2]
+    ```
+
+* Populating a new card for each round for each player
+    * While creating the initial versions of the game, I struggled to come up with an appropriate way to group my code so I can generate new cards and distribute points at the same time. I found that basing my logic on the new card being generated yielded the results I was looking to get.
+
+    ```
+    if new_card:
+    card1 = player_card_image() 
+    card_val_suit1 = cards[card1[1]]
+    card_val1 = card_val_suit1[:-1]
+    cards.remove(card_val_suit1)
+    card2 = comp_card_image()
+    card_val_suit2 = cards[card2[1]]
+    card_val2 = card_val_suit2[:-1] 
+    cards.remove(card_val_suit2)            
+    if (int(card_val1) > int(card_val2)):
+        text.player_point_inc()
+        round_winner = "You"
+    elif (int(card_val1) < int(card_val2)):
+        text.comp_point_inc()
+        round_winner = "Comp"
+    else:
+        round_winner = "Neither"
+    new_card = False 
     ```
 
 ## MVP
